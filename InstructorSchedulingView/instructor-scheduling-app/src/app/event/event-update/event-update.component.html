@@ -1,0 +1,23 @@
+<h2>{{event.event_name}}</h2>
+<br>
+
+<form  (ngSubmit)="updateEvent()">
+    <label for="startDate">Star Date</label>
+    <p-calendar name="startForm"
+        inputId="startDate"
+        [(ngModel)]="event.start_date"
+        [showTime]="true"
+    />
+    <br>
+    <label for="endDate">End Date</label>
+    <p-calendar name="endtForm"
+        inputId="endtDate"
+        [(ngModel)]="event.end_date"
+        [showTime]="true"
+    />
+    <br>
+    <br>
+    <p-button type="submit" label="UpdateEvent"/>
+</form>
+<br>
+<p-button (onClick)="goBack()" label="Back" outlined="true"/>

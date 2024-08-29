@@ -1,0 +1,53 @@
+<!--<ul>
+    <li *ngFor="let event of events">
+        {{event.event_name}}
+        <a [routerLink]="['/events', event.event_id]">View</a>
+        <button (click)="deleteTrainerEvent(event.event_id)">Delete</button>
+    </li>
+</ul>
+<a [routerLink]="['/eventss/create']">Add New Event</a>-->
+
+<br>
+<p-button
+    label="Add Event"
+    (onClick)="addEventLink()"
+/>
+<p-dataView #dv [value]="events" rows="2" [paginator]="true">
+    <ng-template pTemplate="list" let-events>
+        <div class="grid grid-nogutter">
+            <div class="col-12" *ngFor="let item of events; let first = first" class="col-12" [ngStyle]="{'background-color': 'rgb(230, 255, 255)'}">
+                <p-divider />
+                <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3" 
+                [ngClass]="{ 'border-top-1 surface-border': !first }">
+                    <div class="md:w-10rem relative">
+                        <i class="pi pi-calendar-clock"></i>
+                    </div>
+                    <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
+                        <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
+                            <div>
+                                <span class="font-medium text-secondary text-sm">
+                                 {{ item.start_date | date: 'dd-MM-YYYY HH:mm:ss'}} - {{item.end_date | date: 'dd-MM-YYYY HH:mm:ss'}}</span>
+                                <div class="text-lg font-medium text-900 mt-2">{{item.event_name}}</div>
+                                <div class="text-lg font-medium text-900 mt-2">Id: {{item.event_id}}</div>
+                            </div>
+                        </div>
+                        <div class="flex flex-column md:align-items-end gap-5">
+                            <div class="flex flex-row-reverse md:flex-row gap-2">
+                                <!--<p-button icon="pi pi-check" class="flex-auto md:flex-initial white-space-nowrap" label="View" 
+                                (onClick)="loadTrainerEvent(item.event_id)" outlined="true" size="small"/>-->
+                                <p-button icon="pi pi-pencil" class="flex-auto md:flex-initial white-space-nowrap" label="Edit" 
+                                (onClick)="editTrainerEvent(item.event_id)" outlined="true" size="small"/>
+                                <p-button icon="pi pi-trash" class="flex-auto md:flex-initial white-space-nowrap" label="Delete" 
+                                (onClick)="deleteTrainerEvent(item.event_id)" outlined="true" size="small"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <p-divider/>
+            </div>
+        </div>
+    </ng-template>
+</p-dataView>
+<br>
+<p-button label="Back" (onClick)="goBack()"/>

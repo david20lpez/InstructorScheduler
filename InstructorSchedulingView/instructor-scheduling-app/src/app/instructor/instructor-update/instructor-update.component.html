@@ -1,0 +1,16 @@
+<form (ngSubmit)="updateInstructor()">
+    <label for="firstName">Name</label>
+    <br>
+    <input id="firstName" [(ngModel)]="instructor.firstName" name="firstName" required>
+    <br>
+    <label for="lastName">Name </label>
+    <br>
+    <input id="lastName" [(ngModel)]="instructor.lastName" name="lastName" required>
+    <br>
+    <label for="birtday">Birthday </label>
+    <br>
+    <input id="birthday" [(ngModel)]="instructor.birthday" name="birthday" required>
+    <br>
+    <button type="submit">Update Instructor</button>
+</form>
+<button (click)="goBack()">Back</button>

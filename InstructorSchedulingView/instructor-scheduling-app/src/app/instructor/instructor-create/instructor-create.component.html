@@ -1,0 +1,26 @@
+<form (ngSubmit)="createInstructor()">
+    <label for="trainerId">Id</label>
+    <br>
+    <input type="text" pInputText id="trainerId" [(ngModel)]="instructor.trainer_id" name="trainerId" required>
+    <br>
+    <label for="firstName">First Name</label>
+    <br>
+    <input type="text" pInputText type="text" pInputTex id="firstName" [(ngModel)]="instructor.firstName" name="firstName" required>
+    <br>
+    <label for="lastName">Last Name</label>
+    <br>
+    <input type="text" pInputText id="lastName" [(ngModel)]="instructor.lastName" name="lastName" required>
+    <br>
+    <label for="birthday">Birthday</label>
+    <br>
+    <p-calendar name="end_date"
+        inputId="starDate"
+        [(ngModel)]="instructor.birthday"
+    />
+    <br>
+    <br>
+    <p-button type="submit" label="Create Instructor"/>
+</form>
+<br>
+<p-button (click)="goBack()" label="Back" outlined="true"/>
+

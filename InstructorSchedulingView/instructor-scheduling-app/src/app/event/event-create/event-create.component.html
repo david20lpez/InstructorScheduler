@@ -1,0 +1,36 @@
+<form (ngSubmit)="addTrainerEvent()">
+    <label for="eventName">Name</label>
+    <br>
+    <input type="text" pInputText id="eventName" [(ngModel)]="event.event_name" name="eventName" required="">
+    <br>
+    <label for="eventDescription">Description</label>
+    <br>
+    <input type="text" pInputText id="eventDescription" [(ngModel)]="event.description" name="eventDescription">
+    <br>
+    <label for="starDate">Start Date</label>
+    <br>
+    <p-calendar name="start_date"
+    inputId="starDate"
+    [(ngModel)]="event.start_date"
+    [showTime]="true"
+    />
+    <label for="endDate">  End Date  </label>
+    <p-calendar name="end_date"
+        inputId="starDate"
+        [(ngModel)]="event.end_date"
+        [showTime]="true"
+    />
+    <br>
+    <br>
+    <p-dropdown name="instructorForm"
+        [options]="instructors"
+        [(ngModel)]="instructor"
+        optionLabel="firstName"
+        placeholder="Select a Instructor"
+    />
+    <br>
+    <br>
+    <p-button type="submit" label="Add Event"/>
+</form>
+<br>
+<p-button (onClick)="goBack()" label="Back" outlined="true"/>
