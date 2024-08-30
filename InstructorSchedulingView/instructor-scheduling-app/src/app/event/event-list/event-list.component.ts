@@ -7,8 +7,6 @@ import { DataViewModule } from 'primeng/dataview';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 
-
-
 @Component({
   selector: 'app-event-list',
   standalone: true,
@@ -19,7 +17,8 @@ import { DividerModule } from 'primeng/divider';
 export class TrainerEventListComponent implements OnInit{
   events: TrainerEvent[] = [];
 
-  constructor(private eventService: TrainerEventService, private route: Router, private location: Location){}
+  constructor(private eventService: TrainerEventService, private route: Router, private location: Location,
+  ){}
 
   ngOnInit(): void {
     this.eventService.getAllTrainerEvents().subscribe(data => {
