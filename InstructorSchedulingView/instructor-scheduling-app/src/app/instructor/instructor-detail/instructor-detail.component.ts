@@ -18,18 +18,20 @@ import { TrainerEventService } from '../../event/event.service';
 })
 export class InstructorDetailComponent implements OnInit{
 
+  events: any[] = [];
+
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
-    dateClick: this.handleDateClick.bind(this) // Bind the event handler
+    eventClick: this.handleEventClick.bind(this) // Bind the event handler
   };
 
   constructor(private route: ActivatedRoute, private instructorService: InstructorService, private location: Location,
     private eventService: TrainerEventService
   ){}
 
-  handleDateClick(arg: any) {
-    alert('Description ' + arg.dateStr);
+  handleEventClick(info: any) {
+    alert(`Event: ${info.event.title}\nDescription: ${info.event.extendedProps.description}`);
   }
 
   getEvents(){
@@ -37,7 +39,11 @@ export class InstructorDetailComponent implements OnInit{
     this.eventService.getEventsByTrainer(id).subscribe( data => {
       this.calendarOptions.events = data.map(event => ({
         title: event.event_name,
-        date: event.start_date
+        start: event.start_date,
+        end: event.end_date,
+        backgroundColor: 'lightblue',
+        date: event.start_date,
+        description: event.description
       }))
       console.log(this.calendarOptions.events);
     })
